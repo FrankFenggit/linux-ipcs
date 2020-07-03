@@ -225,6 +225,22 @@ msgget函数返回key值对应的消息队列id。
 
 ![img](https:////upload-images.jianshu.io/upload_images/6883138-0370d1bfedce89e4?imageMogr2/auto-orient/strip|imageView2/2/w/709/format/webp)
 
+### 踩坑
+
+#### ftok 得到的key一样，同过msgget 得到的msgid不一定相同。比如删除消息队列重新创建消息队列。
+
+```
+实验环境：虚拟机 Ubuntu 20.04 LTS
+
+实验过程：删除消息队列重新创建
+
+结果：通过 ipcs -q 观测，msgid自动加1
+```
+
+
+
+#### 
+
 ## 1.3 消息队列的进阶
 
   在使用消息队列的时候，你是否会有这样的疑问：如果多个进程同时向一个消息队列里面同一个Type发送消息，那么是否会出现资源竞争同步的问题呢？
