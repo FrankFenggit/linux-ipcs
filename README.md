@@ -257,7 +257,7 @@ msgget函数返回key值对应的消息队列id。
 
 # dbus-glib
 
-直接看demo dbus-glib吧
+直接看demo [dbus-glib](https://github.com/FrankFenggit/linux-ipcs/tree/master/dbus-glib)吧
 
 ```shell
 # 需要安装的库  （虚拟机 Ubuntu 20.04 LTS）
