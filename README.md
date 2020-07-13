@@ -255,3 +255,26 @@ msgget函数返回key值对应的消息队列id。
 
 
 
+# dbus-glib
+
+直接看demo dbus-glib吧
+
+```shell
+# 需要安装的库  （虚拟机 Ubuntu 20.04 LTS）
+sudo apt install libdbus-glib-1-dev libdbus-1-dev libglib2.0-dev
+```
+
+但是看一下，[官网](https://www.freedesktop.org/wiki/Software/DBusBindings/)的描述，还是慎用吧
+
+```
+### DBus-GLib（作废，未维护）
+
+dbus-glib是libdbus的旧GLib绑定。**新的GLib应用程序应使用GDBus。往上看。**
+
+**DBus-GLib假装是线程安全的，但不是。对象模型是垃圾，在GDBus中实现得更好（如上所述）。该代码未维护。不要使用它。**
+
+- [API文档](http://dbus.freedesktop.org/doc/dbus-glib/index.html)
+- [Git存储库和问题跟踪](https://gitlab.freedesktop.org/dbus/dbus-glib)
+- [发布](http://dbus.freedesktop.org/releases/dbus-glib/)
+- [maemo的Glib包装器培训材料](http://maemo.org/maemo_training_material/maemo4.x/html/maemo_Platform_Development_Chinook/Chapter_03_Using_the_GLib_wrappers_for_DBus.html)
+```
