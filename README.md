@@ -257,6 +257,8 @@ msgget函数返回key值对应的消息队列id。
 
 # dbus-glib
 
+## 入门级别
+
 直接看demo [dbus-glib](https://github.com/FrankFenggit/linux-ipcs/tree/master/dbus-glib)吧
 
 ```shell
@@ -278,3 +280,93 @@ dbus-glib是libdbus的旧GLib绑定。**新的GLib应用程序应使用GDBus。�
 - [发布](http://dbus.freedesktop.org/releases/dbus-glib/)
 - [maemo的Glib包装器培训材料](http://maemo.org/maemo_training_material/maemo4.x/html/maemo_Platform_Development_Chinook/Chapter_03_Using_the_GLib_wrappers_for_DBus.html)
 ```
+
+## 工程应用
+
+[dbus-glib-xml-ser-cli](https://github.com/FrankFenggit/linux-ipcs/tree/master/dbus-glib-xml-ser-cli)
+
+### 简述
+
+xml定义通信接口，工具生成接口代码
+
+### 步骤
+
+#### 安装依赖库
+
+#### xml接口代码自动生成
+
+```shell
+#服务端
+dbus-binding-tool --mode=glib-server --prefix=com_wei wei.xml > wei_server.h
+#客户端
+dbus-binding-tool --mode=glib-client --prefix=com_wei wei.xml > wei_client.h 
+```
+
+#### object代码要自己写，固定写法(不够智能)
+
+```c++
+// com_wei_myobject.h 头文件
+#ifndef COM_WEI_MYOBJECT_H
+#define COM_WEI_MYOBJECT_H
+
+#include <glib.h>
+#include <dbus/dbus-glib.h>
+
+typedef struct ComWeiMyObject ComWeiMyObject;
+typedef struct ComWeiMyObjectClass ComWeiMyObjectClass;
+
+struct ComWeiMyObject
+{
+    GObject parent;
+};
+
+struct ComWeiMyObjectClass
+{
+    GObjectClass parent;
+};
+
+#define COM_WEI_MYOBJECT_TYPE  (com_wei_myobject_get_type())
+
+GType com_wei_myobject_get_type(void);
+gboolean com_wei_test(ComWeiMyObject *obj , const guint IN_x, gdouble *OUT_d_ret, GError **error);
+
+#endif
+```
+
+```c++
+// com_wei_myobject.cpp 实现文件
+#include "com_wei_myobject.h"
+
+G_DEFINE_TYPE(ComWeiMyObject,com_wei_myobject,G_TYPE_OBJECT)
+
+static void com_wei_myobject_init(ComWeiMyObject * object)
+{
+    //这个两个init函数大概是GObject的套路，在这个简单的小例子中，没有什么特别的初始化处理
+}
+
+static void com_wei_myobject_class_init(ComWeiMyObjectClass * klass)
+{
+    
+}
+
+gboolean com_wei_test (ComWeiMyObject * obj, const guint IN_x, gdouble* OUT_d_ret, GError ** error)
+{ 
+    //我们只做测试，简单检测输入参数，直接回复输出结果
+    printf("com_wei_test() get input param: x= %d/n",IN_x);
+    *OUT_d_ret = 0.99;
+    return TRUE;
+}
+```
+
+#### 服务端、客户端代码自己撸，可以参考我的demo
+
+### 参考资料
+
+1. [CSDN博主博客，介绍的好不错](https://blog.csdn.net/flowingflying/article/details/4527634)
+
+2. [官网API接口文档](https://dbus.freedesktop.org/doc/dbus-glib/)
+
+3. [dbus源码](https://gitlab.freedesktop.org/dbus/dbus)
+
+   
+
