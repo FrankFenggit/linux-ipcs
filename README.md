@@ -360,13 +360,14 @@ gboolean com_wei_test (ComWeiMyObject * obj, const guint IN_x, gdouble* OUT_d_re
 
 #### 服务端、客户端代码自己撸，可以参考我的demo
 
-### 参考资料
+## 参考资料
 
 1. [CSDN博主博客，介绍的好不错](https://blog.csdn.net/flowingflying/article/details/4527634)
+2. [CNDN博主博客 API.XML的 效率改进思路不错](https://blog.csdn.net/billxin2012/article/details/46348395?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522159555297519195264530425%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=159555297519195264530425&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v3~rank_business_v1-1-46348395.ecpm_v3_rank_business_v1&utm_term=dbus+phonix&spm=1018.2118.3001.4187)
+3. [IBM Developer](https://www.ibm.com/developerworks/cn/linux/l-dbus.html)
+4. [官网API接口文档](https://dbus.freedesktop.org/doc/dbus-glib/)
+5. [dbus源码](https://gitlab.freedesktop.org/dbus/dbus)
+6. [chinaunix dbus原生API比较全的例子](http://blog.chinaunix.net/uid-8968071-id-2012244.html)
+7. [神马岛 dbus-glib 收发信号简单demo](https://msd.misuland.com/pd/4146263948980657977)
 
-2. [官网API接口文档](https://dbus.freedesktop.org/doc/dbus-glib/)
-
-3. [dbus源码](https://gitlab.freedesktop.org/dbus/dbus)
-
-   
-
+## 
